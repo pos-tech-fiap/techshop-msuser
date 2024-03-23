@@ -1,22 +1,17 @@
-package com.techshopmsuser.entity;
+package com.techshopmsuser.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-@Entity
-@Table(name = "tb_user")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
     @NotNull
     private String name;
     @NotNull
     private String CPF;
+    @NotNull
+    private String origin;
     @NotNull
     private LocalDateTime birthDate;
     @NotNull
@@ -25,26 +20,6 @@ public class User {
     private String mobile;
     @NotNull
     private String email;
-
-    public User() {    }
-
-    public User(UUID id, @NotNull String name, @NotNull String CPF, @NotNull LocalDateTime birthDate, @NotNull String address, @NotNull String mobile, @NotNull String email) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.CPF = CPF;
-        this.birthDate = birthDate;
-        this.address = address;
-        this.mobile = mobile;
-        this.email = email;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -60,6 +35,14 @@ public class User {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public LocalDateTime getBirthDate() {
