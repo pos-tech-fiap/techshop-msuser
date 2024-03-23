@@ -1,5 +1,6 @@
 package com.techshopmsuser.dto;
 
+import com.techshopmsuser.entity.User;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,9 @@ public class UserDTO {
     private String mobile;
     @NotNull
     private String email;
+
+    public UserDTO(User user) {
+    }
 
     public String getName() {
         return name;
