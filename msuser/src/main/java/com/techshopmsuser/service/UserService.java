@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -34,7 +33,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public UserDTO findById(UUID id) {
+    public UserDTO findById(Long id) {
         var user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         logger.info("Usuarios encontrados: {}", user);
         return new UserDTO(user);
@@ -54,7 +53,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO update(UUID id, UserDTO userDTO) {
+    public UserDTO update(Long id, UserDTO userDTO) {
         try {
             User usuario = userRepository.getOne(id);
             mapperDtoToEntity(userDTO, usuario);
@@ -66,7 +65,7 @@ public class UserService {
         }
     }
 
-    public void delete(UUID id) {
+    public void delete(Long id) {
         try {
             userRepository.deleteById(id);
             logger.info("Usuario removido com sucesso: {}");

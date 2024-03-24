@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotNull
     private String name;
     @NotNull
@@ -28,8 +27,7 @@ public class User {
 
     public User() {    }
 
-    public User(UUID id, @NotNull String name, @NotNull String CPF, @NotNull LocalDateTime birthDate, @NotNull String address, @NotNull String mobile, @NotNull String email) {
-        this.id = UUID.randomUUID();
+    public User(@NotNull String name, @NotNull String CPF, @NotNull LocalDateTime birthDate, @NotNull String address, @NotNull String mobile, @NotNull String email) {
         this.name = name;
         this.CPF = CPF;
         this.birthDate = birthDate;
@@ -38,11 +36,11 @@ public class User {
         this.email = email;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

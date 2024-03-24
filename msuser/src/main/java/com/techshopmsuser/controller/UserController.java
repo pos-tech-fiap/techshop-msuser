@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -29,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable UUID id) {
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(userService.findById(id));
     }
 
@@ -39,12 +37,12 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable UUID id, @RequestBody @Valid UserDTO usuarioDTO) {
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody @Valid UserDTO usuarioDTO) {
         return ResponseEntity.ok().body(userService.update(id, usuarioDTO));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<String> delete(@PathVariable UUID id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         userService.delete(id);
         return ResponseEntity.ok().body("Usuario removido com sucesso!");
     }
