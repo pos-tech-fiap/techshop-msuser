@@ -12,8 +12,6 @@ public class UserDTO {
     @NotNull
     private String CPF;
     @NotNull
-    private String origin;
-    @NotNull
     private LocalDateTime birthDate;
     @NotNull
     private String address;
@@ -23,6 +21,12 @@ public class UserDTO {
     private String email;
 
     public UserDTO(User user) {
+        this.name = user.getName();
+        this.CPF = user.getCPF();
+        this.birthDate = user.getBirthDate();
+        this.address = user.getAddress();
+        this.mobile = user.getMobile();
+        this.email = user.getEmail();
     }
 
     public String getName() {
@@ -39,14 +43,6 @@ public class UserDTO {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
     }
 
     public LocalDateTime getBirthDate() {

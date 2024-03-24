@@ -1,16 +1,18 @@
 -- Criar database
--- CREATE DATABASE techshop;
+CREATE DATABASE msuser;
 
 -- Conectar ao database
-\c techshop;
+\c msuser;
 
 CREATE TABLE tb_user (
-    id BIGINT PRIMARY KEY,
+    id serial PRIMARY KEY,
     name VARCHAR(255) not null,
-    birthDate VARCHAR(255) not null,
+    birth_date VARCHAR(255) not null,
     cpf BIGINT not null,
     address VARCHAR(255) not null,
     mobile VARCHAR(255) not null,
-    email VARCHAR(255) not null,
-    value double precision not null
+    email VARCHAR(255) not null
 );
+
+INSERT INTO tb_user (name, birth_date, cpf, address, mobile, email)
+VALUES ('João', '1990-01-01', 123456789, 'Rua 1', '123456789', 'joao@email.com');
