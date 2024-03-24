@@ -1,8 +1,8 @@
 -- Criar database
--- CREATE DATABASE techshop;
+-- CREATE DATABASE msuser;
 
 -- Conectar ao database
-\c techshop;
+\c msuser;
 
 CREATE TABLE tb_user (
     id BIGINT PRIMARY KEY,
